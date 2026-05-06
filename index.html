@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Análise Executiva: Cultura do Desnível & Gestão por Segregação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #eef2f7;
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #1a2c3e;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        /* container principal */
+        .analysis-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* CABEÇALHO personalizado com foto e contato */
+        .doc-header {
+            background: rgb(39, 98, 141);
+            padding: 1.8rem 2.5rem;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .header-title-area {
+            flex: 2;
+            min-width: 220px;
+        }
+        .header-title-area h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.3px;
+        }
+        .header-title-area .subhead {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            border-left: 3px solid #ffcd6b;
+            padding-left: 0.8rem;
+            margin-top: 0.4rem;
+        }
+        .header-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(2px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            flex-wrap: wrap;
+        }
+        .profile-pic {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffcd6b;
+            background: #fff;
+        }
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .profile-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #25d366;
+            color: #0a2b2f;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 40px;
+            margin-top: 5px;
+            transition: 0.2s;
+            width: fit-content;
+        }
+        .whatsapp-link:hover {
+            background: #20b859;
+            color: white;
+        }
+
+        /* conteúdo */
+        .content-core {
+            padding: 2.2rem 2.5rem;
+        }
+
+        /* badges e cards */
+        .comparison-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0 2.5rem;
+        }
+        .card-model {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: 0.2s;
+        }
+        .card-model:hover {
+            transform: translateY(-3px);
+        }
+        .card-header-impact {
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            border-bottom: 2px solid;
+        }
+        .card-header-impact.leader {
+            background-color: #eef4fa;
+            border-bottom-color: rgb(39, 98, 141);
+            color: rgb(20, 70, 100);
+        }
+        .card-header-impact.outdated {
+            background-color: #fef2f0;
+            border-bottom-color: #c23d2e;
+            color: #8b2c1e;
+        }
+        .card-body {
+            padding: 1.4rem 1.5rem;
+        }
+        .card-body p {
+            margin-bottom: 0.75rem;
+            font-size: 0.92rem;
+        }
+        .badge-compare {
+            background: #eef2f9;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin: 2rem 0 1.2rem 0;
+            padding-left: 1rem;
+            border-left: 5px solid rgb(39, 98, 141);
+            color: #1a3a4f;
+        }
+        .topic {
+            background-color: #fafcff;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid #eef2f8;
+        }
+        .topic h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: rgb(39, 98, 141);
+        }
+        .insight-quote {
+            background-color: #fef7e0;
+            border-left: 5px solid #ffcd6b;
+            padding: 1rem 1.5rem;
+            margin: 1.2rem 0;
+            border-radius: 14px;
+            font-weight: 500;
+            color: #5e4a18;
+        }
+        .consequence-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0 1.5rem;
+        }
+        .conseq-item {
+            background: white;
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            font-size: 0.9rem;
+        }
+        .reflection-box {
+            background: rgb(39, 98, 141);
+            color: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        .reflection-box p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #4b5c74;
+        }
+        .footer-links a {
+            color: rgb(39, 98, 141);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+        }
+        /* Botão voltar ao topo discreto */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgb(39, 98, 141);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            opacity: 0.7;
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .back-to-top:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            background: #1f5a7e;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+        }
+        /* removendo ícones antigos e usando elementos discretos */
+        .topic h3::before {
+            content: "▹";
+            color: rgb(39, 98, 141);
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+        .card-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card-body li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .card-body li::before {
+            content: "—";
+            color: rgb(39, 98, 141);
+            position: absolute;
+            left: 0;
+        }
+        @media (max-width: 780px) {
+            .content-core {
+                padding: 1.5rem;
+            }
+            .doc-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-profile {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="analysis-container">
+    <!-- Cabeçalho com foto e contato -->
+    <div class="doc-header">
+        <div class="header-title-area">
+            <h1>A "Cultura do Desnível": Impactos da Má Gestão e Segregação Espacial</h1>
+            <div class="subhead">Quando a estrutura física reflete a falência da liderança — e a "carteirada" substitui a competência</div>
+        </div>
+        <div class="header-profile">
+            <img src="Gestão_SG.png" alt="Silvanio Gois" class="profile-pic" onerror="this.onerror=null; this.src='https://placehold.co/56x56?text=SG'">
+            <div class="profile-info">
+                <span class="profile-name">Silvanio Gois</span>
+                <a href="https://wa.me/5513988301094" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+                    Contato
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-core">
+        <!-- 1. Definição do problema -->
+        <div class="topic">
+            <h3>Anatomia da toxicidade</h3>
+            <p>Não se trata de um desalinhamento pontual de RH. Trata-se de um <strong>sistema simbólico e físico</strong> onde a hierarquia de carteira e o luxo segregador transmitem: <em>"conforto é privilégio de quem manda, produtividade do time é secundária"</em>. Gestores que insistem na ostentação enquanto a base opera com cadeiras quebradas e ferramentas sucateadas não estão liderando — estão <strong>construindo um fosso de desengajamento</strong>.</p>
+            <div class="insight-quote">
+                Dar a carteira ou exibir o título para calar uma crítica não é demonstração de poder. É confissão de fragilidade gerencial.
+            </div>
+        </div>
+
+        <!-- Comparação: liderança de impacto vs modelo ultrapassado -->
+        <div class="section-title">Liderança de impacto vs Gestão por segregação (exemplo ultrapassado)</div>
+        <div class="comparison-grid">
+            <div class="card-model">
+                <div class="card-header-impact leader">
+                    O Líder que faz a diferença
+                </div>
+                <div class="card-body">
+                    <span class="badge-compare">AUTORIDADE CONQUISTADA</span>
+                    <p>Baseia seu poder na <strong>resolução de problemas</strong> e na remoção de obstáculos operacionais.</p>
+                    <p>Empatia como inteligência estratégica: entende que cadeira decente e equipamento adequado são geradores de produtividade, não custo.</p>
+                    <p>Gestão por caminhada (MBWA): sai da sala luxuosa e senta onde o trabalho acontece.</p>
+                    <p>Elimina barreiras de status para fomentar inovação e pertencimento.</p>
+                </div>
+            </div>
+            <div class="card-model">
+                <div class="card-header-impact outdated">
+                    Modelo ultrapassado: "Cultura da Carteirada"
+                </div>
+                <div class="card-body">
+                    <span class="badge-compare">FALÊNCIA DE LIDERANÇA</span>
+                    <p>Usa o cargo para silenciar opiniões: “quem manda aqui sou eu”.</p>
+                    <p>Segregação espacial proposital: luxo da diretoria x sucateamento operacional. Mensagem implícita: “vocês não pertencem ao meu mundo”.</p>
+                    <p>Precarização como controle indireto — vigia sofrimento em vez de gerir resultado.</p>
+                    <p>Destrói o senso de justiça; time opera em modo sobrevivência, nunca por lealdade.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eixos de análise -->
+        <div class="section-title">Eixos de análise: o Abismo de Cristal e a síndrome da torre de marfim</div>
+        <div class="topic">
+            <h3>Segregação física como ferramenta de poder</h3>
+            <p>A arquitetura corporativa fala mais que qualquer mural de valores. Quando a sala da diretoria ostenta móveis de design, iluminação premium e climatização individual, enquanto o operacional convive com cadeiras estofadas gastas, monitores obsoletos e equipamentos básicos em falta, a mensagem é clara: <strong>existe um ‘nós’ e um ‘eles’</strong>. Essa geografia da desigualdade gera ressentimento crônico e corrói o engajamento. Consequência tática: colaboradores param de sugerir melhorias e passam a boicotar silenciosamente a produtividade. Presenteísmo e rotatividade invisível se instalam.</p>
+        </div>
+        <div class="topic">
+            <h3>Gestão por Esnobismo e ausência de cultura genuína</h3>
+            <p>Missão e visão plastificadas na parede tornam-se farsa quando a liderança negligencia o básico. A cultura não se declara, <strong>se pratica no dia a dia</strong> — e a prática da segregação forma verdadeiros "feudos". O chefe que exige comprometimento enquanto trata o colaborador como descartável cria um abismo de confiança. O resultado: equipe desmotivada, turnover alto e perda dos melhores talentos.</p>
+        </div>
+        <div class="topic">
+            <h3>Desengajamento sistêmico: o custo invisível</h3>
+            <p>Funcionário que percebe o desprezo institucional não se engaja. Ele cumpre tabela, evita risco, não defende a empresa. O fenômeno do “quiet quitting” nasce aqui. Além disso, a liderança isolada na “torre de marfim” perde a capacidade de diagnosticar gargalos reais. Tomam-se decisões baseadas em relatórios filtrados, sem a pulsão real da operação.</p>
+            <div class="insight-quote">
+                “Quando a liderança prioriza a carteira em vez da escuta, ela perde autoridade moral. A obediência até pode existir por medo, mas a excelência nunca.”
+            </div>
+        </div>
+
+        <!-- Consequências estruturais -->
+        <div class="section-title">Consequências a médio e longo prazo</div>
+        <div class="consequence-list">
+            <div class="conseq-item"><strong>Perda de talentos</strong><br>Os profissionais mais capacitados saem — sobram os que não possuem alternativas, rebaixando o patamar competitivo.</div>
+            <div class="conseq-item"><strong>Employer branding tóxico</strong><br>Fama de “péssimo lugar para trabalhar” dificulta contratação e aumenta custo de retenção.</div>
+            <div class="conseq-item"><strong>Rivalidade interna e silos</strong><br>Segregação gera guerra entre setores, fluxo de informações travado e decisões desconectadas.</div>
+            <div class="conseq-item"><strong>Riscos jurídicos e insalubridade</strong><br>Ambientes precários, ergonomia negligenciada e falta de EPIs violam NRs, gerando passivo trabalhista.</div>
+        </div>
+
+        <!-- Pilares para reversão -->
+        <div class="section-title">Pilares para reversão do quadro (o que deve ser feito)</div>
+        <div class="topic">
+            <h3>Humanização da liderança — fim da torre de marfim</h3>
+            <p>Gestão por caminhada não é moda: é termômetro de realidade. Diretores devem ocupar o espaço operacional, ouvir ativamente e agir em menos de 48 horas nas dores críticas (cadeiras, ergonomia, ferramentas). A sala luxuosa pode existir, mas jamais como símbolo de esnobismo.</p>
+            <h3>Investimento imediato na base</h3>
+            <p>Antes de qualquer benesse executiva: cadeiras adequadas, monitores atualizados, equipamentos de ponta. <strong>Equipamento não é regalia, é instrumento de eficiência</strong>. Uma empresa que subinveste no time opera no amadorismo.</p>
+            <h3>Construção compartilhada de valores reais</h3>
+            <p>Reuniões de alinhamento com transparência radical. Revisitar a missão com times multifuncionais e transformar a política em prática cotidiana. Nada de murais enganosos.</p>
+            <h3>Feedback 360º e canais protegidos</h3>
+            <p>Criar canais independentes para denúncia de más condições sem retaliação — e principalmente, <strong>agir com base no retorno</strong>. Pesquisas de clima anônimas com métricas de equidade física.</p>
+            <h3>Substituir “carteirada” por competência demonstrável</h3>
+            <p>Critério de promoção: capacidade de servir e desenvolver pessoas. Lideranças que precisam lembrar o time do próprio cargo são automaticamente realocadas ou capacitadas.</p>
+        </div>
+
+        <!-- Reflexão final -->
+        <div class="reflection-box">
+            <p>“Um título te dá poder, mas apenas a empatia te dá autoridade. Quem precisa usar a carteira para mostrar quem é, na verdade, já deixou de ser um líder há muito tempo.”</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">A empatia não é trait de personalidade — é competência central de gestão. Quando um gestor observa uma cadeira quebrada e não resolve, ele revela mais sobre sua incompetência do que sobre sua agenda.</p>
+        </div>
+
+        <!-- provocação final -->
+        <div style="background: #f9fafc; border-radius: 20px; padding: 1.5rem 2rem; margin: 1.8rem 0; border: 1px solid #dee4ec;">
+            <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Pergunta para reflexão (gestor para gestor):</p>
+            <p style="font-size: 1.05rem;"><strong>A sua empresa está produzindo valor ou está apenas produzindo desigualdade no ambiente de trabalho?</strong></p>
+            <p>Enquanto o layout físico separar “nós” e “eles”, enquanto cadeiras quebradas conviverem com poltronas executivas, a cultura de segregação será mais forte que qualquer código de ética. O turnover alto não é acaso — é sintoma de que a liderança abandonou seu papel de arquiteta de condições dignas.</p>
+            <hr>
+            <p style="margin-top: 0.5rem;">O líder atual entende que a infraestrutura do time é o reflexo direto da competência da presidência. O modelo de chefia por ostentação e isolamento é um fóssil corporativo incompatível com alta performance.</p>
+        </div>
+
+        <!-- rodapé com direitos e link -->
+        <div class="footer-note">
+            <span>© 2026 Silvanio Gois - Todos os direitos reservados.</span>
+            <div class="footer-links">
+                <a href="https://www.silvaniogois.com.br/" target="_blank" rel="noopener noreferrer">ir ao Site ↗</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Botão voltar ao topo discreto -->
+<a href="#" class="back-to-top" aria-label="Voltar ao topo">↑</a>
+
+<!-- pequeno smooth para garantir controle sobre o scroll -->
+<script>
+    document.querySelector('.back-to-top')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    // fallback para imagem caso o arquivo não seja encontrado (apenas elegância)
+    const img = document.querySelector('.profile-pic');
+    if(img) {
+        img.addEventListener('error', function() {
+            this.style.backgroundColor = '#ffcd6b';
+            this.style.display = 'flex';
+            this.style.alignItems = 'center';
+            this.style.justifyContent = 'center';
+            this.style.fontSize = '20px';
+            this.style.fontWeight = 'bold';
+            this.style.color = '#1e4663';
+            this.alt = 'SG';
+        });
+    }
+</script>
+</body>
+</html>
